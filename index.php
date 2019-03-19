@@ -4,7 +4,7 @@
 
 	$mustache = new Mustache_Engine(array(
 		'template_class_prefix' => '__MyTemaplate_',
-		'cache' => dirname(__FILE__). '/tmp/cache/mustache',
+		//'cache' => dirname(__FILE__). '/tmp/cache/mustache',
 		'cache_file_mode' => 0666,
 		'cache_lambda_templates' => true,
 		'loader' => new Mustache_Loader_FilesystemLoader(dirname(__FILE__).'/views'),
@@ -21,9 +21,11 @@
 		'pragmas' => [Mustache_Engine::PRAGMA_FILTERS],
 	));
 
-	$tpl = $mustache->loadTemplate('sample'); // loads __DIR__.'/views/foo.mustache'
+	$tpl = $mustache->loadTemplate('sample'); // loads __DIR__.'/views/sample.mustache'
 	echo $tpl->render(array('bar' => 'baz'));
 
 
 	$m = new Mustache_Engine;
-	echo $m->render('Hello, {{ planet }}!', array('planet'=>'World'));// this printout hello world
+
+	echo $m->render('Hello, {{ planet }}!', 
+	array('planet'=>'World this is a mustache project sample'));// this printout hello world
